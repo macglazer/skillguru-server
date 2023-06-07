@@ -1,6 +1,6 @@
 package skillguru.service;
 
-import org.springframework.http.HttpEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import skillguru.exception.BadRequestException;
@@ -13,15 +13,14 @@ import static skillguru.mapper.MentorMapper.mentorBuilder;
 @Service
 public class MentorService {
 
-
     private final MentorRepository mentorRepository;
 
-
+    @Autowired
     public MentorService(MentorRepository mentorRepository) {
         this.mentorRepository = mentorRepository;
     }
 
-    public ResponseEntity<?> registerMentor(RegisterMentorRequest registerMentorRequest)  {
+    public ResponseEntity<?> registerMentor(RegisterMentorRequest registerMentorRequest) {
         if (checkIfExist(registerMentorRequest)) {
             throw new BadRequestException("Mentor with this data");
         }
