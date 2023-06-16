@@ -29,7 +29,7 @@ public class MentorService {
         return ResponseEntity.ok().build();
     }
 
-    boolean checkIfExist(RegisterMentorRequest registerMentorRequest) {
+    private boolean checkIfExist(RegisterMentorRequest registerMentorRequest) {
         return mentorRepository.findByEmail(registerMentorRequest.getEmail()).isPresent();
     }
 }

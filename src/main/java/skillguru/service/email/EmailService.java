@@ -5,12 +5,11 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
-import org.thymeleaf.templateresolver.ITemplateResolver;
 import skillguru.model.request.RegisterMentorRequest;
+import skillguru.model.request.RegisterStudentRequest;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.util.Set;
 
 @Service
 public class EmailService {
@@ -18,6 +17,7 @@ public class EmailService {
     private JavaMailSender emailSender;
 
     private final TemplateEngine templateEngine;
+
 
     public EmailService(JavaMailSender emailSender, TemplateEngine templateEngine) {
         this.emailSender = emailSender;
@@ -30,13 +30,25 @@ public class EmailService {
 
     public void registerMentorEmail(RegisterMentorRequest registerMentorRequest) throws MessagingException {
         Context context = getContext();
+
         context.setVariable("header", registerMentorRequest.getEmail());
         context.setVariable("title", "title");
         context.setVariable("name", registerMentorRequest.getEmail().split("@")[0]);
 
         MimeMessage message = emailSender.createMimeMessage();
 
-        prepareEmail("witaj@skillguru.pl", registerMentorRequest.getEmail(), "Rejestracja","registration", message);
+        prepareEmail("witaj@skillguru.pl", registerMentorRequest.getEmail(), "Witaj mentorze!","registrationmentor", message);
+    }
+
+    public void registerStudentEmail(RegisterStudentRequest registerStudentRequest) throws MessagingException {
+        Context context = getContext();
+        context.setVariable("header", registerStudentRequest.getEmail());
+        context.setVariable("title", "title");
+        context.setVariable("name", registerStudentRequest.getEmail().split("@")[0]);
+
+        MimeMessage message = emailSender.createMimeMessage();
+
+        prepareEmail("witaj@skillguru.pl", registerStudentRequest.getEmail(), "Witaj studencie!","registrationmentor", message);
     }
 
     public void prepareEmail(String from, String emailFrom,String title, String template, MimeMessage message) throws MessagingException {

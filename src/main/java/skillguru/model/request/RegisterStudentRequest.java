@@ -1,4 +1,4 @@
-package skillguru.model.entities;
+package skillguru.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,22 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 @Data
 @ToString
-@Entity(name = "student")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Student {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long studentID;
+public class RegisterStudentRequest {
 
     private String firstName;
 

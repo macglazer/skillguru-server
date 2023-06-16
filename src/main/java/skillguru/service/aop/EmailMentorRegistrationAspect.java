@@ -1,4 +1,4 @@
-package skillguru.service;
+package skillguru.service.aop;
 
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
