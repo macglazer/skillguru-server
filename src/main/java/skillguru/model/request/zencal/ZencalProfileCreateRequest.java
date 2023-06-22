@@ -6,12 +6,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.UUID;
+
 @Data
 @ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ZencalProfileCreateRequest {
+
+    private String zencalId;
+
+    private UUID uuid;
 
     private String firstName;
 

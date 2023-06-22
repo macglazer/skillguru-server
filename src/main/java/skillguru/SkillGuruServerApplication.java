@@ -9,5 +9,4 @@ public class SkillGuruServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(SkillGuruServerApplication.class, args);
     }
-
 }

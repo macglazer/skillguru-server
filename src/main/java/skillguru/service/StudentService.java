@@ -28,6 +28,15 @@ public class StudentService {
         return ResponseEntity.ok().build();
     }
 
+    public ResponseEntity<?> loginStudent(RegisterStudentRequest student) {
+        if (!checkIfExist(student)) {
+            return ResponseEntity.notFound().build();
+        }
+//        Student student = StudentMapper.studentBuilder(student);
+//        studentRepository.save(student);
+        return ResponseEntity.ok().build();
+    }
+
     private boolean checkIfExist(RegisterStudentRequest registerStudentRequest) {
         return studentRepository.findByEmail(registerStudentRequest.getEmail()).isPresent();
     }

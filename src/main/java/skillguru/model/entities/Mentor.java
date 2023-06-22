@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.UUID;
 
 @Data
 @ToString
@@ -21,6 +22,10 @@ public class Mentor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long mentorID;
+
+    private UUID uuid;
+
+    private String zecnalId;
 
     private String firstName;
 
